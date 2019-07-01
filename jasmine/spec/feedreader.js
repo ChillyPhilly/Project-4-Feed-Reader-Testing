@@ -75,7 +75,7 @@ $(function() {
      */
     it('changes visibility when menu icon is clicked', function() {
       const spyEvent = spyOnEvent(menuIcon, 'click');
-      
+
       if (body.classList.contains('menu-hidden')) {
         $((menuIcon).click());
         expect(body.classList.contains('menu-hidden')).toBe(false);
@@ -88,8 +88,10 @@ $(function() {
         expect(body.classList.contains('menu-hidden')).toBe(false);
       }
     });
+  });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+  /* TODO: Write a new test suite named "Initial Entries" */
+  describe('Initial Entries', function() {
 
     /* TODO: Write a test that ensures when the loadFeed
      * function is called and completes its work, there is at least
@@ -98,11 +100,13 @@ $(function() {
      * the use of Jasmine's beforeEach and asynchronous done() function.
      */
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
 
-    /* TODO: Write a test that ensures when a new feed is loaded
-     * by the loadFeed function that the content actually changes.
-     * Remember, loadFeed() is asynchronous.
-     */
   });
+
+  /* TODO: Write a new test suite named "New Feed Selection" */
+
+  /* TODO: Write a test that ensures when a new feed is loaded
+   * by the loadFeed function that the content actually changes.
+   * Remember, loadFeed() is asynchronous.
+   */
 }());
