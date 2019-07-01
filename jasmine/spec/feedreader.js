@@ -75,11 +75,18 @@ $(function() {
      */
     it('changes visibility when menu icon is clicked', function() {
       const spyEvent = spyOnEvent(menuIcon, 'click');
-      $((menuIcon).click());
-      expect(body.classList.contains('menu-hidden')).toBe(false);
-
-      $((menuIcon).click());
-      expect(body.classList.contains('menu-hidden')).toBe(true);
+      
+      if (body.classList.contains('menu-hidden')) {
+        $((menuIcon).click());
+        expect(body.classList.contains('menu-hidden')).toBe(false);
+        $((menuIcon).click());
+        expect(body.classList.contains('menu-hidden')).toBe(true);
+      } else if (!body.classList.contains('menu-hidden')) {
+        $((menuIcon).click());
+        expect(body.classList.contains('menu-hidden')).toBe(true);
+        $((menuIcon).click());
+        expect(body.classList.contains('menu-hidden')).toBe(false);
+      }
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
