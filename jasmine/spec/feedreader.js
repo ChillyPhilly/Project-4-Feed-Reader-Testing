@@ -35,6 +35,7 @@ $(function() {
       allFeeds.forEach(function(item) {
         expect(item.url).toBeDefined();
         expect(typeof item.url).toBe('string');
+        expect(item.url).toContain('http://');
         expect(item.url).not.toBe('');
       });
     });
@@ -47,7 +48,7 @@ $(function() {
     it('have names defined', function() {
       allFeeds.forEach(function(item) {
         expect(item.name).toBeDefined();
-        expect(typeof item.url).toBe('string');
+        expect(typeof item.name).toBe('string');
         expect(item.name).not.toBe('');
       });
     });
