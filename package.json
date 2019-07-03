@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "git": "^0.1.5"
+    "git": "^0.1.5",
+    "jasmine-jquery": "^2.1.1"
   }
 }
