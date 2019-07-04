@@ -76,7 +76,7 @@ $(function() {
       const spyEvent = spyOnEvent(menuIcon, 'click');
 
       // If statements to make sure this is independent of the menu
-      // being "Hidden by default". 
+      // being "Hidden by default".
       if (body.classList.contains('menu-hidden')) {
         $((menuIcon).click());
         expect(body.classList.contains('menu-hidden')).toBe(false);
@@ -93,7 +93,6 @@ $(function() {
 
   /* Test suite for "Initial Entries" */
   describe('Initial Entries', function() {
-    const feed = document.querySelector('.feed');
 
     beforeEach(function(done) {
       loadFeed(0, function() {
@@ -106,7 +105,9 @@ $(function() {
      * a single .entry element within the .feed container.
      */
     it('has at least one element in the feed', function(done) {
-      expect(feed.firstElementChild).not.toBe(null);
+      const feedChildren = $('.feed .entry');
+
+      expect(feedChildren.length).toBeGreaterThan(0);
       done();
     });
   });
@@ -130,9 +131,8 @@ $(function() {
   /* Ensures when a new feed is loaded
    * by the loadFeed function that the content actually changes.
    */
-   it('changes content when a new feed is selected', function(done) {
+   it('changes content when a new feed is selected', function() {
      expect(oldFeed).not.toBe(newFeed);
-     done();
    });
  });
 }());
