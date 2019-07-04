@@ -75,6 +75,8 @@ $(function() {
     it('changes visibility when menu icon is clicked', function() {
       const spyEvent = spyOnEvent(menuIcon, 'click');
 
+      // If statements to make sure this is independent of the menu
+      // being "Hidden by default". 
       if (body.classList.contains('menu-hidden')) {
         $((menuIcon).click());
         expect(body.classList.contains('menu-hidden')).toBe(false);
@@ -104,27 +106,33 @@ $(function() {
      * a single .entry element within the .feed container.
      */
     it('has at least one element in the feed', function(done) {
-      expect(feed.childElementCount).not.toBe(0);
+      expect(feed.firstElementChild).not.toBe(null);
       done();
     });
   });
 
   /* Test suite for "New Feed Selection" */
   describe('New Feed Selection', function() {
-    const feed = document.querySelector('.feed'),
-          originalFirstChild = feed.firstElementChild;
+    let oldFeed, newFeed;
 
+    //Loads feed 0 and feed 1 asynchronously, and feeds this back
+    //so that the oldFeed and newFeed can be compared
     beforeEach(function(done) {
-      loadFeed(1, function() {
-        done();
+      loadFeed(0, function() {
+        oldFeed = $('.feed').html();
+        loadFeed(1, function() {
+          newFeed = $('.feed').html();
+          done();
+        });
       });
     });
+
   /* Ensures when a new feed is loaded
    * by the loadFeed function that the content actually changes.
    */
-   it('changes content when a new feed is selected', function() {
-     expect(feed.firstElementChild).not.toBe(originalFirstChild);
-
+   it('changes content when a new feed is selected', function(done) {
+     expect(oldFeed).not.toBe(newFeed);
+     done();
    });
  });
 }());
